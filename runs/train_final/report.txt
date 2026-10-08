@@ -1,0 +1,69 @@
+LAPORAN PIPELINE CAE
+============================================================
+argumen: {'data': 'dataset_BI', 'out': 'runs/train_final', 'size': 64, 'enc_k': 4, 'dec_k': 4, 'channels': '4,8,8', 'epochs': 200, 'batch': 4, 'lr': 0.002, 'alpha': 0.05, 'seed': 0, 'group_regex': '^(roi_latent_?\\d+)', 'anomaly_dir': None, 'anomaly_group_regex': None, 'pca_k': 16, 'act_percentile': 99.99, 'limit': None, 'export': True, 'n_golden': 16, 'no_plots': False, 'synthetic_demo': False, 'selftest_only': False}
+
+Data: 74 gambar, 10 kelompok; train/val/calib/test = 40/6/16/12
+Model: enc k=4, dec k=4, kanal (4, 8, 8), S=64
+  MAC 524288, parameter 3233 (bobot 3200, bias 33), latent 512
+  siklus 8 lane: dasar 147456 (util 0.444), lanjutan 81920 (util 0.800)
+  batas akumulator teori 2097152 (23 bit); teramati 17 bit
+Val MSE terbaik (float): 0.036145
+
+Threshold (split conformal, alpha=0.05, n_calib=16): T = 1633439
+  asli ditolak (NON_AUTHENTIC) pada kalibrasi 0.000; pada UJI asli bersih 0.250
+  (jaminan hanya berlaku bila kondisi capture uji sama dengan kalibrasi DAN n_calib cukup)
+
+KEPUTUSAN 2 STATUS pada T (CAE int8, SSE <= T -> AUTHENTIC; selain itu NON_AUTHENTIC)
+  'benar' = fraksi keputusan yang sesuai harapan; interval = Wilson 95% (mengasumsikan sampel independen,
+  padahal crop dari lembar sama berkorelasi, jadi interval sebenarnya lebih lebar)
+himpunan        n  AUTH  NON_AUTH        harapan  benar         CI95
+-------------  --  ----  --------  -------------  -----  -----------
+ASLI uji (G0)  12     9         3      AUTHENTIC  0.750  [0.47-0.91]
+G1_blur_s1     12    12         0      AUTHENTIC  1.000  [0.76-1.00]
+G1_blur_s2     12    12         0      AUTHENTIC  1.000  [0.76-1.00]
+G1_terang+25   12     2        10      AUTHENTIC  0.167  [0.05-0.45]
+G1_gelap-25    12    10         2      AUTHENTIC  0.833  [0.55-0.95]
+G1_geser_2px   12     8         4      AUTHENTIC  0.667  [0.39-0.86]
+G1_rotasi_3d   12    10         2      AUTHENTIC  0.833  [0.55-0.95]
+A1_pudar_15    12    12         0  NON_AUTHENTIC  0.000  [0.00-0.24]
+A1_hapus_blok  12     9         3  NON_AUTHENTIC  0.250  [0.09-0.53]
+A1_noise_25    12     0        12  NON_AUTHENTIC  1.000  [0.76-1.00]
+A1_cermin      12     2        10  NON_AUTHENTIC  0.833  [0.55-0.95]
+A1_rotasi_90   12     2        10  NON_AUTHENTIC  0.833  [0.55-0.95]
+A1_acak_tile   12     5         7  NON_AUTHENTIC  0.583  [0.32-0.81]
+
+AUROC: asli(uji) vs set anomali; kolom = metode; lebih tinggi = lebih mudah dipisahkan
+G1 = asli dengan variasi capture (idealnya MENDEKATI 0,5); A1 = anomali digital (idealnya tinggi)
+NYATA = crop non-asli dari --anomaly-dir (baca CATATAN di bawah tentang isinya)
+set                        PCA  Templ.  CAEflt  CAEi8  CAEi8sad  Kontras  Cerah  NON_AUTH@T
+-----------------------  -----  ------  ------  -----  --------  -------  -----  ----------
+G1_blur_s1               0.021   0.000   0.000  0.000     0.000    0.972  0.493       0.000
+G1_blur_s2               0.000   0.000   0.000  0.000     0.000    1.000  0.514       0.000
+G1_terang+25             0.750   0.889   0.750  0.750     0.750    0.250  1.000       0.833
+G1_gelap-25              0.250   0.833   0.250  0.250     0.250    0.750  1.000       0.167
+G1_geser_2px             0.556   0.472   0.500  0.500     0.521    0.521  0.493       0.333
+G1_rotasi_3d             0.250   0.250   0.181  0.181     0.181    0.750  0.569       0.167
+A1_pudar_15              0.000   0.000   0.000  0.000     0.000    1.000  0.517       0.000
+A1_hapus_blok            0.417   0.375   0.368  0.375     0.333    0.625  0.528       0.250
+A1_noise_25              0.882   0.861   0.972  0.972     0.965    0.139  0.486       1.000
+A1_cermin                0.639   0.507   0.743  0.743     0.743    0.493  0.500       0.833
+A1_rotasi_90             0.632   0.451   0.750  0.750     0.743    0.490  0.500       0.833
+A1_acak_tile             0.688   0.597   0.674  0.674     0.674    0.493  0.500       0.583
+G1 gabungan              0.304   0.407   0.280  0.280     0.284    0.707  0.678           -
+A1 digital gabungan      0.543   0.465   0.584  0.586     0.576    0.540  0.505           -
+FPR@95%TPR (A1 digital)  1.000   1.000   1.000  1.000     1.000    1.000  1.000           -
+
+Paritas float vs int8: Spearman skor SSE = 1.0000; selisih AUROC A1 (float - int8) = -0.0012
+  (target awal spesifikasi: selisih <= 0,01)
+
+Kolom 'NON_AUTH@T' = fraksi ROI yang divonis NON_AUTHENTIC oleh CAE int8 pada T.
+  Untuk G1 nilai kecil diinginkan (asli tidak boleh ditolak); untuk A1 dan NYATA nilai besar diinginkan.
+
+PERINGATAN OTOMATIS
+  1. n_calib = 16 < 19: T hanyalah skor maksimum kalibrasi; JANGAN menulis 'false-reject <= 5% terjamin'.
+  2. Uji asli hanya 12 gambar; satu penolakan = 8.3%. Lihat interval kepercayaan, dan jalankan evaluasi.py (validasi silang antar kelompok) untuk angka yang lebih kokoh.
+  3. ROI pudar/buram mendapat error LEBIH KECIL daripada asli (AUROC < 0,5): cetakan buram dapat lolos. Masukkan ke bagian keterbatasan.
+
+CATATAN: anomali A1/G1 adalah perturbasi DIGITAL. AUROC tinggi pada A1 tidak membuktikan
+  deteksi uang palsu cetakan. 'NYATA' hanya setara 'bukan ROI latent asli' kecuali sumbernya
+  terbukti uang palsu; sebutkan isi dan sumbernya di proposal.

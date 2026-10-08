@@ -1,0 +1,327 @@
+{
+ "args": {
+  "data": "dataset_BI",
+  "out": "runs/train_final",
+  "size": 64,
+  "enc_k": 4,
+  "dec_k": 4,
+  "channels": "4,8,8",
+  "epochs": 200,
+  "batch": 4,
+  "lr": 0.002,
+  "alpha": 0.05,
+  "seed": 0,
+  "group_regex": "^(roi_latent_?\\d+)",
+  "anomaly_dir": null,
+  "anomaly_group_regex": null,
+  "pca_k": 16,
+  "act_percentile": 99.99,
+  "limit": null,
+  "export": true,
+  "n_golden": 16,
+  "no_plots": false,
+  "synthetic_demo": false,
+  "selftest_only": false
+ },
+ "T": 1633439,
+ "tau": 398.788818359375,
+ "alpha": 0.05,
+ "auroc": {
+  "G1_blur_s1": {
+   "pca": 0.020833333333333332,
+   "template_sad": 0.0,
+   "cae_float_sse": 0.0,
+   "cae_int8_sse": 0.0,
+   "cae_int8_sad": 0.0,
+   "std_rendah": 0.9722222222222222,
+   "mean_dev": 0.4930555555555556
+  },
+  "G1_blur_s2": {
+   "pca": 0.0,
+   "template_sad": 0.0,
+   "cae_float_sse": 0.0,
+   "cae_int8_sse": 0.0,
+   "cae_int8_sad": 0.0,
+   "std_rendah": 1.0,
+   "mean_dev": 0.5138888888888888
+  },
+  "G1_terang+25": {
+   "pca": 0.75,
+   "template_sad": 0.8888888888888888,
+   "cae_float_sse": 0.75,
+   "cae_int8_sse": 0.75,
+   "cae_int8_sad": 0.75,
+   "std_rendah": 0.25,
+   "mean_dev": 1.0
+  },
+  "G1_gelap-25": {
+   "pca": 0.25,
+   "template_sad": 0.8333333333333334,
+   "cae_float_sse": 0.25,
+   "cae_int8_sse": 0.25,
+   "cae_int8_sad": 0.25,
+   "std_rendah": 0.75,
+   "mean_dev": 1.0
+  },
+  "G1_geser_2px": {
+   "pca": 0.5555555555555556,
+   "template_sad": 0.4722222222222222,
+   "cae_float_sse": 0.5,
+   "cae_int8_sse": 0.5,
+   "cae_int8_sad": 0.5208333333333334,
+   "std_rendah": 0.5208333333333334,
+   "mean_dev": 0.4930555555555556
+  },
+  "G1_rotasi_3d": {
+   "pca": 0.25,
+   "template_sad": 0.25,
+   "cae_float_sse": 0.18055555555555555,
+   "cae_int8_sse": 0.18055555555555555,
+   "cae_int8_sad": 0.18055555555555555,
+   "std_rendah": 0.75,
+   "mean_dev": 0.5694444444444444
+  },
+  "A1_pudar_15": {
+   "pca": 0.0,
+   "template_sad": 0.0,
+   "cae_float_sse": 0.0,
+   "cae_int8_sse": 0.0,
+   "cae_int8_sad": 0.0,
+   "std_rendah": 1.0,
+   "mean_dev": 0.5173611111111112
+  },
+  "A1_hapus_blok": {
+   "pca": 0.4166666666666667,
+   "template_sad": 0.375,
+   "cae_float_sse": 0.3680555555555556,
+   "cae_int8_sse": 0.375,
+   "cae_int8_sad": 0.3333333333333333,
+   "std_rendah": 0.625,
+   "mean_dev": 0.5277777777777778
+  },
+  "A1_noise_25": {
+   "pca": 0.8819444444444444,
+   "template_sad": 0.8611111111111112,
+   "cae_float_sse": 0.9722222222222222,
+   "cae_int8_sse": 0.9722222222222222,
+   "cae_int8_sad": 0.9652777777777778,
+   "std_rendah": 0.1388888888888889,
+   "mean_dev": 0.4861111111111111
+  },
+  "A1_cermin": {
+   "pca": 0.6388888888888888,
+   "template_sad": 0.5069444444444444,
+   "cae_float_sse": 0.7430555555555556,
+   "cae_int8_sse": 0.7430555555555556,
+   "cae_int8_sad": 0.7430555555555556,
+   "std_rendah": 0.4930555555555556,
+   "mean_dev": 0.5
+  },
+  "A1_rotasi_90": {
+   "pca": 0.6319444444444444,
+   "template_sad": 0.4513888888888889,
+   "cae_float_sse": 0.75,
+   "cae_int8_sse": 0.75,
+   "cae_int8_sad": 0.7430555555555556,
+   "std_rendah": 0.4895833333333333,
+   "mean_dev": 0.5
+  },
+  "A1_acak_tile": {
+   "pca": 0.6875,
+   "template_sad": 0.5972222222222222,
+   "cae_float_sse": 0.6736111111111112,
+   "cae_int8_sse": 0.6736111111111112,
+   "cae_int8_sad": 0.6736111111111112,
+   "std_rendah": 0.4930555555555556,
+   "mean_dev": 0.5
+  }
+ },
+ "auroc_A1": {
+  "pca": 0.5428240740740741,
+  "template_sad": 0.4652777777777778,
+  "cae_float_sse": 0.5844907407407407,
+  "cae_int8_sse": 0.5856481481481481,
+  "cae_int8_sad": 0.5763888888888888,
+  "std_rendah": 0.5399305555555556,
+  "mean_dev": 0.5052083333333334
+ },
+ "auroc_G1": {
+  "pca": 0.30439814814814814,
+  "template_sad": 0.4074074074074074,
+  "cae_float_sse": 0.2800925925925926,
+  "cae_int8_sse": 0.2800925925925926,
+  "cae_int8_sad": 0.2835648148148148,
+  "std_rendah": 0.7071759259259259,
+  "mean_dev": 0.6782407407407407
+ },
+ "fpr_at_95tpr_A1": {
+  "pca": 1.0,
+  "template_sad": 1.0,
+  "cae_float_sse": 1.0,
+  "cae_int8_sse": 1.0,
+  "cae_int8_sad": 1.0,
+  "std_rendah": 1.0,
+  "mean_dev": 1.0
+ },
+ "false_anomaly_test": 0.25,
+ "flagged": {
+  "G1_blur_s1": 0.0,
+  "G1_blur_s2": 0.0,
+  "G1_terang+25": 0.8333333333333334,
+  "G1_gelap-25": 0.16666666666666666,
+  "G1_geser_2px": 0.3333333333333333,
+  "G1_rotasi_3d": 0.16666666666666666,
+  "A1_pudar_15": 0.0,
+  "A1_hapus_blok": 0.25,
+  "A1_noise_25": 1.0,
+  "A1_cermin": 0.8333333333333334,
+  "A1_rotasi_90": 0.8333333333333334,
+  "A1_acak_tile": 0.5833333333333334
+ },
+ "decisions": {
+  "G0": {
+   "benar": 9,
+   "n": 12
+  },
+  "G1_blur_s1": {
+   "benar": 12,
+   "n": 12
+  },
+  "G1_blur_s2": {
+   "benar": 12,
+   "n": 12
+  },
+  "G1_terang+25": {
+   "benar": 2,
+   "n": 12
+  },
+  "G1_gelap-25": {
+   "benar": 10,
+   "n": 12
+  },
+  "G1_geser_2px": {
+   "benar": 8,
+   "n": 12
+  },
+  "G1_rotasi_3d": {
+   "benar": 10,
+   "n": 12
+  },
+  "A1_pudar_15": {
+   "benar": 0,
+   "n": 12
+  },
+  "A1_hapus_blok": {
+   "benar": 3,
+   "n": 12
+  },
+  "A1_noise_25": {
+   "benar": 12,
+   "n": 12
+  },
+  "A1_cermin": {
+   "benar": 10,
+   "n": 12
+  },
+  "A1_rotasi_90": {
+   "benar": 10,
+   "n": 12
+  },
+  "A1_acak_tile": {
+   "benar": 7,
+   "n": 12
+  }
+ },
+ "balanced_accuracy": null,
+ "warnings": [
+  "n_calib = 16 < 19: T hanyalah skor maksimum kalibrasi; JANGAN menulis 'false-reject <= 5% terjamin'.",
+  "Uji asli hanya 12 gambar; satu penolakan = 8.3%. Lihat interval kepercayaan, dan jalankan evaluasi.py (validasi silang antar kelompok) untuk angka yang lebih kokoh.",
+  "ROI pudar/buram mendapat error LEBIH KECIL daripada asli (AUROC < 0,5): cetakan buram dapat lolos. Masukkan ke bagian keterbatasan."
+ ],
+ "spearman": 1.0,
+ "acc_bits_observed": [
+  17,
+  15,
+  16,
+  14,
+  15,
+  14
+ ],
+ "best_val_mse": 0.036145441234111786,
+ "model": {
+  "S": 64,
+  "mac": 524288,
+  "weights": 3200,
+  "bias": 33,
+  "params": 3233,
+  "enc_mac": 262144,
+  "dec_mac": 262144,
+  "cyc_base": 147456,
+  "cyc_adv": 81920,
+  "util_base": 0.4444444444444444,
+  "util_adv": 0.8,
+  "latent": 512,
+  "inbuf": 4096,
+  "mem_A": 4096,
+  "mem_B": 2048,
+  "mem_min": 10240,
+  "mem_sym": 12288,
+  "rom_words": 528,
+  "rom_bytes": 4224,
+  "max_terms": 128,
+  "acc_bound": 2097152,
+  "acc_bits": 23,
+  "sse_max": 266342400,
+  "sad_max": 1044480,
+  "sse_bits": 28,
+  "sad_bits": 20,
+  "payload_bytes": 3342,
+  "sha_blocks": 53
+ },
+ "shifts": [
+  9,
+  7,
+  8,
+  6,
+  6,
+  6
+ ],
+ "exps": [
+  {
+   "layer": "E1",
+   "e_w": -7,
+   "e_in": -7,
+   "e_out": -5
+  },
+  {
+   "layer": "E2",
+   "e_w": -7,
+   "e_in": -5,
+   "e_out": -5
+  },
+  {
+   "layer": "E3",
+   "e_w": -8,
+   "e_in": -5,
+   "e_out": -5
+  },
+  {
+   "layer": "D1",
+   "e_w": -6,
+   "e_in": -5,
+   "e_out": -5
+  },
+  {
+   "layer": "D2",
+   "e_w": -7,
+   "e_in": -5,
+   "e_out": -6
+  },
+  {
+   "layer": "D3",
+   "e_w": -7,
+   "e_in": -6,
+   "e_out": -7
+  }
+ ]
+}
