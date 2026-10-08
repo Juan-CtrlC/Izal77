@@ -1,0 +1,114 @@
+[
+ {
+  "integrity_ok": 0,
+  "input_ok": 0,
+  "in_time": 0,
+  "sse_le_T": 0,
+  "result": "NON_AUTHENTIC"
+ },
+ {
+  "integrity_ok": 0,
+  "input_ok": 0,
+  "in_time": 0,
+  "sse_le_T": 1,
+  "result": "NON_AUTHENTIC"
+ },
+ {
+  "integrity_ok": 0,
+  "input_ok": 0,
+  "in_time": 1,
+  "sse_le_T": 0,
+  "result": "NON_AUTHENTIC"
+ },
+ {
+  "integrity_ok": 0,
+  "input_ok": 0,
+  "in_time": 1,
+  "sse_le_T": 1,
+  "result": "NON_AUTHENTIC"
+ },
+ {
+  "integrity_ok": 0,
+  "input_ok": 1,
+  "in_time": 0,
+  "sse_le_T": 0,
+  "result": "NON_AUTHENTIC"
+ },
+ {
+  "integrity_ok": 0,
+  "input_ok": 1,
+  "in_time": 0,
+  "sse_le_T": 1,
+  "result": "NON_AUTHENTIC"
+ },
+ {
+  "integrity_ok": 0,
+  "input_ok": 1,
+  "in_time": 1,
+  "sse_le_T": 0,
+  "result": "NON_AUTHENTIC"
+ },
+ {
+  "integrity_ok": 0,
+  "input_ok": 1,
+  "in_time": 1,
+  "sse_le_T": 1,
+  "result": "NON_AUTHENTIC"
+ },
+ {
+  "integrity_ok": 1,
+  "input_ok": 0,
+  "in_time": 0,
+  "sse_le_T": 0,
+  "result": "NON_AUTHENTIC"
+ },
+ {
+  "integrity_ok": 1,
+  "input_ok": 0,
+  "in_time": 0,
+  "sse_le_T": 1,
+  "result": "NON_AUTHENTIC"
+ },
+ {
+  "integrity_ok": 1,
+  "input_ok": 0,
+  "in_time": 1,
+  "sse_le_T": 0,
+  "result": "NON_AUTHENTIC"
+ },
+ {
+  "integrity_ok": 1,
+  "input_ok": 0,
+  "in_time": 1,
+  "sse_le_T": 1,
+  "result": "NON_AUTHENTIC"
+ },
+ {
+  "integrity_ok": 1,
+  "input_ok": 1,
+  "in_time": 0,
+  "sse_le_T": 0,
+  "result": "NON_AUTHENTIC"
+ },
+ {
+  "integrity_ok": 1,
+  "input_ok": 1,
+  "in_time": 0,
+  "sse_le_T": 1,
+  "result": "NON_AUTHENTIC"
+ },
+ {
+  "integrity_ok": 1,
+  "input_ok": 1,
+  "in_time": 1,
+  "sse_le_T": 0,
+  "result": "NON_AUTHENTIC"
+ },
+ {
+  "integrity_ok": 1,
+  "input_ok": 1,
+  "in_time": 1,
+  "sse_le_T": 1,
+  "result": "AUTHENTIC"
+ }
+]
